@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Yonetim/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Kategori Adı</th>
+                <th>Ürün Sayısı</th>
+                <th>Düzenle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var item in Model.KategoriList)
+                {
+                    var mobilyaurunleri = Model.MobilyaList.Where(x => x.KategoriId == item.Id).ToList();
+                    <tr>
+                        <td>@item.Ad</td>
+                        <td>@mobilyaurunleri.Count()</td>
+                        <td><button data-ad="@item.Ad" type="button" data-id="@item.Id" data-toggle="modal" data-target="#MdlDuzenle" class="btn btn-primary btnDuzenle">Düzenle</button></td>
+                        <td><button data-ad="@item.Ad" type="button" data-id="@item.Id" data-toggle="modal" data-target="#MdlSil" class="btn btn-danger btnSil">Sil</button></td>
+                    </tr>
+                }*@
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="MdlDuzenle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kategori Düzenle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="txtKategori" class="form-control" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button type="button" data-id="" id="MdlButtonDuzenle" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="MdlSil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Kategori Sil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <strong id="kategoriAdi"></strong> adli kategoriyi silmek istediğinize emin misiniz? <br />
+                <small>Kategoriyi sildikten sonra içerisindeki bütün ürünler silinir !!!!</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button type="button" data-id="" id="MdlButtonSil" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/jquery-1.12.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btnDuzenle").click(function () {
+            $("#MdlButtonDuzenle").data("id", $(this).data("id"))
+            $("#txtKategori").val($(this).data("ad"));
+        })
+        $(".btnSil").click(function () {
+            $("#MdlButtonSil").data("id", $(this).data("id"))
+            $("#kategoriAdi").text($(this).data("ad"));
+
+
+        })
+        $("#MdlButtonDuzenle").click(function () {
+            var id = $(this).data("id");
+            var ad = $("#txtKategori").val();
+            $.ajax({
+                url: "/Yonetim/Kategoriler/Duzenle",
+                data: { id: id, ad: ad },
+                success: function () {
+                    window.location.reload();
+                }
+
+            })
+        })
+        $("#MdlButtonSil").click(function () {
+            var id = $(this).data("id");
+            var ad = $(this).val();
+            $.ajax({
+                url: "/Yonetim/Kategoriler/Sil",
+                data: { id: id },
+                success: function () {
+                    window.location.reload();
+
+                }
+
+            })
+        })
+    })
+</script>

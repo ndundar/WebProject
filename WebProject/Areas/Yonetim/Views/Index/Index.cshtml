@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<link href="~/Areas/Yonetim/Content/Login.css" rel="stylesheet" />
+<div class="login">
+    <h1>Giriş Ekranı</h1>
+    <form action="/Yonetim/Index" method="post">
+        <input type="text" name="mail" placeholder="Kullanıcı adı" required="required" />
+        <input type="password" name="sifre" placeholder="Şifre" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Giriş</button>
+        <p style="color:red">@ViewBag.Hata</p>
+    </form>
+</div>

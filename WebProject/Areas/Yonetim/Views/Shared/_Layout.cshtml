@@ -1,0 +1,160 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Areas/Yonetim/Content/assets/images/vatan-2.png">
+    <title>Vatan Mobilya Yönetim Paneli [@HttpContext.Current.User.Identity.Name]</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Areas/Yonetim/Content/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="~/Areas/Yonetim/Content/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/Areas/Yonetim/Content/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="~/Areas/Yonetim/Content/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Areas/Yonetim/Content/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="~/Areas/Yonetim/Content/css/pages/dashboard.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    <link href="~/Areas/Yonetim/Content/css/colors/default-dark.css" id="theme" rel="stylesheet">
+    <link href="http://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="fix-header fix-sidebar card-no-border ">
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Admin Pro</p>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon --><b>
+                           
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                                          <span>
+                                              @*<img src="~/Areas/Yonetim/Content/assets/images/" />*@
+                                          </span>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box">
+                            <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-dark" href="#"><img src="~/Areas/Yonetim/Content/assets/images/users/2.jpg"user" class="profile-pic" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        @*<li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a></li>*@
+                        @*<li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a></li>*@
+                        <li> <a class="waves-effect waves-dark" href="/Yonetim/Urunler/Index" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Ürünler</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="/Yonetim/Kategoriler/Index" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Kategoriler</span></a></li>
+                        @*<li> <a class="waves-effect waves-dark" href="/Yonetim/Makale/Liste" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Blog</span></a></li>*@
+
+                        @*<li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Table</span></a></li>*@
+                        @*<li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i class="mdi mdi-earth"></i><span class="hide-menu">Map</span></a></li>*@
+                        @*<li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank</span></a></li>*@
+                        @*<li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">404</span></a></li>*@
+                    </ul>
+                    <div class="text-center m-t-30">
+                        <a href="/Yonetim/Index/Cikisyap" class="btn waves-effect waves-light btn-info hidden-md-down">Çıkış Yap</a>
+                    </div>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Areas/Yonetim/Content/assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap popper Core JavaScript -->
+<script src="~/Areas/Yonetim/Content/assets/plugins/bootstrap/js/popper.min.js"></script>
+<script src="~/Areas/Yonetim/Content/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="~/Areas/Yonetim/Content/js/perfect-scrollbar.jquery.min.js"></script>
+<!--Wave Effects -->
+<script src="~/Areas/Yonetim/Content/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="~/Areas/Yonetim/Content/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="~/Areas/Yonetim/Content/js/custom.min.js"></script>
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+<script src="~/Areas/Yonetim/Content/assets/plugins/chartist-js/dist/chartist.min.js"></script>
+<script src="~/Areas/Yonetim/Content/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+<!--c3 JavaScript -->
+<script src="~/Areas/Yonetim/Content/assets/plugins/d3/d3.min.js"></script>
+<script src="~/Areas/Yonetim/Content/assets/plugins/c3-master/c3.min.js"></script>
+<!-- Chart JS -->
+<script src="~/Areas/Yonetim/Content/js/dashboard.js"></script>
+<script src="~/Areas/Yonetim/Content/js/main.js"></script>
